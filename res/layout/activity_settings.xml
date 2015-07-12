@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#f0ffff" >
+
+    <PreferenceCategory android:layout_width="wrap_content">
+
+        <ListPreference
+            android:background="@drawable/settings_item"
+            android:dialogTitle="@string/settings_select_language"
+            android:entries="@array/language"
+            android:entryValues="@array/language_sp_key"
+            android:key="current_app_language"
+            android:title="@string/settings_language" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

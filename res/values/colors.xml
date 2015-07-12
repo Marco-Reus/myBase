@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- 通用色 common color -->
+    <color name="white">#FFFFFF</color>
+
+    <!-- 应用主色调 绿色  ，如首页和底部栏 -->
+    <color name="app_green">#00be8e</color>
+
+</resources>

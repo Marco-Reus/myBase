@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- values -->
+    <string name="app_name">个人App</string>
+    <string name="action_settings">设置</string>
+    <string name="settings_language">语言/language</string>
+    <string name="settings_select_language">选择语言</string>
+    <string name="txt_tab1">首页</string>
+    <string name="txt_tab2">比赛</string>
+    <string name="txt_tab3">视频</string>
+    <string name="txt_tab4">圈子</string>
+    <string name="txt_tab5">我</string>
+    <string name="loading">正在加载...</string>
+
+</resources>

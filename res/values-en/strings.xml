@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- values-en -->
+    <string name="app_name">MyApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="settings_language">语言/language</string>
+    <string name="settings_select_language">Select Language</string>
+    <string name="txt_tab1">main</string>
+    <string name="txt_tab2">match</string>
+    <string name="txt_tab3">video</string>
+    <string name="txt_tab4">society</string>
+    <string name="txt_tab5">me</string>
+
+</resources>
