@@ -7,7 +7,7 @@
     <PreferenceCategory android:layout_width="wrap_content">
 
         <ListPreference
-            android:background="@drawable/settings_item"
+            android:background="@drawable/selector_settings_item"
             android:dialogTitle="@string/settings_select_language"
             android:entries="@array/language"
             android:entryValues="@array/language_sp_key"

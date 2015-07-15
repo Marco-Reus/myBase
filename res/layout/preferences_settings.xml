@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/settings_item" >
+    android:background="@drawable/selector_settings_item" >
 
     <TextView
         android:id="@+id/tv_dialog"

@@ -17,6 +17,17 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!-- 主页的radio -->
+    <style name="main_radio">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
     <!-- 提示框 -->
     <style name="alert_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowIsFloating">true</item>

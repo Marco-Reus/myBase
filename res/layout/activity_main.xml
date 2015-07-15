@@ -4,24 +4,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <de.bvb.mybistudy.widget.TopBar
+    <de.bvb.mybistudy.ui.widget.TopBar
         android:id="@+id/top_bar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_tab1" />
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_tab2" />
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_tab3" />
+        <RadioButton
+            android:id="@+id/rb_0"
+            style="@style/main_radio"
+            android:drawableTop="@drawable/arrow_right"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            style="@style/main_radio"
+            android:drawableTop="@drawable/arrow_right"
+            android:text="比赛" />
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            style="@style/main_radio"
+            android:drawableTop="@drawable/arrow_right"
+            android:text="视频" />
+
+        <RadioButton
+            android:id="@+id/rb_3"
+            style="@style/main_radio"
+            android:drawableTop="@drawable/arrow_right"
+            android:text="我的" />
+    </RadioGroup>
 
 </LinearLayout>
