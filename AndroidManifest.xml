@@ -25,6 +25,8 @@
         </activity>
         <activity android:name="de.bvb.mybistudy.ui.activity.SettingsActivity" >
         </activity>
+        <activity android:name="de.bvb.mybistudy.ui.activity.DetailActivity"></activity>
+        <activity android:name="de.bvb.mybistudy.ui.activity.SearchActivity"></activity>
     </application>
 
 </manifest>

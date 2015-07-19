@@ -82,12 +82,14 @@ public class TopBar extends RelativeLayout implements View.OnClickListener {
 	/** 设置右边文字 */
 	public void setTopBarRightText(String rightText) {
 		iv_top_bar_right.setVisibility(View.GONE);
+		tv_top_bar_right.setVisibility(View.VISIBLE);
 		tv_top_bar_right.setText(rightText);
 	}
 
 	/** 设置右边图标 */
 	public void setTopBarRightIcon(int resId) {
 		tv_top_bar_right.setVisibility(View.GONE);
+		iv_top_bar_right.setVisibility(View.VISIBLE);
 		iv_top_bar_right.setImageResource(resId);
 	}
 
