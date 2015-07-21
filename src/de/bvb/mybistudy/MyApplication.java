@@ -28,7 +28,7 @@ public class MyApplication extends Application {
 	}
 
 	/** Activity管理列表 */
-	private List<Activity> activityList = new LinkedList<>();
+	private List<Activity> activityList = new LinkedList<Activity>();
 
 	@Override
 	public void onCreate() {

@@ -26,16 +26,20 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private TopBar topBar;
 	private RadioButton[] rbs;
 	private Fragment fragments[];
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		context=this;
+		
 		initView();
 		initData();
 		initEvent();
-		setChoiceItem(0);
+		setChoiceItem(1);
 	}
 
 	private void initView() {

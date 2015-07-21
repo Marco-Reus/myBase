@@ -25,6 +25,8 @@
             android:layout_marginRight="10dp"
             android:text="@string/loading"
             android:textColor="#ffffff"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textSize="20sp" />
     </LinearLayout>
 
