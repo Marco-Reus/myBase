@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		initView();
 		initData();
 		initEvent();
-		setChoiceItem(1);
+		setChoiceItem(3);
 	}
 
 	private void initView() {
@@ -51,11 +51,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	private void initData() {
 		topBar.setTopBarTitle(this.getResources().getString(R.string.txt_tab1));
-		topBar.setTopBarRightIcon(R.drawable.settings);
+	//	topBar.setTopBarRightIcon(R.drawable.settings);
 	}
 
 	private void initEvent() {
-		topBar.setTopBarClickListener(topBarClickListener);
+		//topBar.setTopBarClickListener(topBarClickListener);
 		for (int i = 0; i < rbs.length; i++) {
 			rbs[i].setOnClickListener(this);
 		}

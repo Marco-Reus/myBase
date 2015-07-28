@@ -1,6 +1,5 @@
 package de.bvb.mybistudy.ui.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,19 +10,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import de.bvb.mybistudy.MainActivity;
 import de.bvb.mybistudy.R;
+import de.bvb.mybistudy.ui.BaseFragment;
 import de.bvb.mybistudy.util.ToastUtil;
 
-public class MatchFragment extends Fragment implements OnClickListener {
+public class MatchFragment extends BaseFragment implements OnClickListener {
 
-	private MainActivity activity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.activity_match, null);
 
-		activity=(MainActivity) getActivity();
 		show = (Button) view.findViewById(R.id.show);
 		dismiss = (Button) view.findViewById(R.id.dismiss);
 		show.setOnClickListener(this);
@@ -38,10 +35,10 @@ public class MatchFragment extends Fragment implements OnClickListener {
 				showData((String) msg.obj);
 				break;
 			case 1:
-				ToastUtil.showShort(activity.context, "网络错误");
+				ToastUtil.showShort(context, "网络错误");
 				break;
 			}
-			activity.dismissProgressDialog();
+			 dismissProgressDialog();
 		}
 
 	};
@@ -64,7 +61,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.show:
-			activity.showProgressDialog("ing");
+			showProgressDialog("ing");
 			new Thread() {
 				public void run() {
 					String data = getData();
@@ -74,7 +71,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 
 			break;
 		case R.id.dismiss:
-			activity.showProgressDialog("正在加载阿斯蒂芬卡萨丁发送到发送克莱顿法蜀都赋");
+			showProgressDialog("正在加载阿斯蒂芬卡萨丁发送到发送克莱顿法蜀都赋");
 			new Thread() {
 				public void run() {
 					String data = getData();

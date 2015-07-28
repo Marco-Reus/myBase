@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 仿W3 我  的界面 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/adapter_fragment_me_listview" />
+    <!-- 顶部头像和工号 -->
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="100dp"
+        android:background="#ffff88"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-        <ListView
-            android:id="@+id/lv_fragment_me"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="ddddddddd" />
+    </LinearLayout>
+
+    <!-- 功能菜单列表 -->
+
+    <GridView
+        android:id="@+id/gv_me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        
+        android:verticalSpacing="10dp" >
+    </GridView>
 
 </LinearLayout>

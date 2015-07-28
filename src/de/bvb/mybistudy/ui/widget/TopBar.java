@@ -49,6 +49,14 @@ public class TopBar extends RelativeLayout implements View.OnClickListener {
 		rl_top_bar_right.setOnClickListener(this);
 	}
 
+	/** 重置顶部栏 */
+	public void setTopBarReset() {
+		rl_bop_bar.setBackgroundColor(context.getResources().getColor(R.color.app_green));
+		setTopBarTitle(null);
+		rl_top_bar_right.setVisibility(View.GONE);
+		rl_top_bar_right.setOnClickListener(null);
+	}
+
 	/** 设置顶部栏整个背景的颜色 */
 	public void setTopBarBackgroundColor(int color) {
 		rl_bop_bar.setBackgroundColor(color);

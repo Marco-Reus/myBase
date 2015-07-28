@@ -3,17 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <de.bvb.mybistudy.ui.widget.TopBar
-        android:id="@+id/top_bar_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1" />
 
     <include layout="@layout/adapter_fragment_video_listview" />
 
@@ -23,7 +12,7 @@
         android:layout_weight="1" >
 
         <ListView
-            android:id="@+id/lv_search"
+            android:id="@+id/lv_fragment_me"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>

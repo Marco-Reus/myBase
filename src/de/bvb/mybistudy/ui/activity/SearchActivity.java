@@ -55,7 +55,7 @@ public class SearchActivity extends Activity {
 		});
 
 		lv = (ListView) findViewById(R.id.lv_search);
-		adapter = new MeAdapter(this, R.layout.adapter_fragment_me_listview);
+		adapter = new MeAdapter(this, R.layout.adapter_fragment_video_listview);
 		lv.setAdapter(adapter);
 	}
 }
