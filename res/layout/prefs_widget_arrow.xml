@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 调整的是每个栏目的右边的按钮 -->
+<!-- 对应系统中的  preferences.xml  文件 -->
+
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+	android:src="@drawable/arrow_right"
+    android:clickable="false"
+    android:focusable="false" />

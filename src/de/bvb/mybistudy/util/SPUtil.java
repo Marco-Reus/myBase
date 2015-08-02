@@ -2,10 +2,13 @@ package de.bvb.mybistudy.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import de.bvb.mybistudy.common.Constant;
 
 /** 首选项工具类 */
@@ -13,10 +16,16 @@ public class SPUtil {
 	/** 默认保存在手机里面的文件名 */
 	private static final String SP_FILE_NAME = Constant.SP_FILE_NAME;
 
-	/** 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法 */
+	/** 使用当前设置的文件名 */
 	public static void put(Context context, String key, Object object) {
+		put(context, SP_FILE_NAME, key, object);
+	}
 
-		SharedPreferences sp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+	/** 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法 */
+	@SuppressWarnings("unchecked")
+	public static void put(Context context, String spFileName, String key, Object object) {
+
+		SharedPreferences sp = context.getSharedPreferences(spFileName, Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sp.edit();
 
 		if (object instanceof String) {
@@ -29,6 +38,8 @@ public class SPUtil {
 			editor.putFloat(key, (Float) object);
 		} else if (object instanceof Long) {
 			editor.putLong(key, (Long) object);
+		} else if (object instanceof Set<?>) {
+			editor.putStringSet(key, (Set<String>) object);
 		} else {
 			editor.putString(key, object.toString());
 		}
@@ -36,9 +47,14 @@ public class SPUtil {
 		SharedPreferencesCompat.apply(editor);
 	}
 
-	/** 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值 */
 	public static Object get(Context context, String key, Object defaultObject) {
-		SharedPreferences sp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+		return get(context, SP_FILE_NAME, key, defaultObject);
+	}
+
+	/** 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值 */
+	@SuppressWarnings("unchecked")
+	public static Object get(Context context, String spFileName, String key, Object defaultObject) {
+		SharedPreferences sp = context.getSharedPreferences(spFileName, Context.MODE_PRIVATE);
 
 		if (defaultObject instanceof String) {
 			return sp.getString(key, (String) defaultObject);
@@ -50,6 +66,8 @@ public class SPUtil {
 			return sp.getFloat(key, (Float) defaultObject);
 		} else if (defaultObject instanceof Long) {
 			return sp.getLong(key, (Long) defaultObject);
+		} else if (defaultObject instanceof HashSet<?>) {
+			return sp.getStringSet(key, (Set<String>) defaultObject);
 		}
 
 		return null;
@@ -120,7 +138,7 @@ public class SPUtil {
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		private static Method findApplyMethod() {
 			try {
-				Class clz = SharedPreferences.Editor.class;
+				Class<Editor> clz = SharedPreferences.Editor.class;
 				return clz.getMethod("apply");
 			} catch (NoSuchMethodException e) {
 			}

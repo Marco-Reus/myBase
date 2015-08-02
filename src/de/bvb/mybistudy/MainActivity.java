@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		@Override
 		public void onClickRight() {
-			ToastUtil.showShort(MainActivity.this, "进入设置界面");
+			ToastUtil.show(MainActivity.this, "进入设置界面");
 			startActivity(new Intent(MainActivity.this, SettingsActivity.class));
 		}
 	};

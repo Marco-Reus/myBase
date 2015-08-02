@@ -35,7 +35,7 @@ public class MatchFragment extends BaseFragment implements OnClickListener {
 				showData((String) msg.obj);
 				break;
 			case 1:
-				ToastUtil.showShort(context, "网络错误");
+				ToastUtil.show(context, "网络错误");
 				break;
 			}
 			 dismissProgressDialog();

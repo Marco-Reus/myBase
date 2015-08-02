@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:layout="@layout/prefs_category_widget" >
+
+        <!-- 开关 -->
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="developer_mode"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="开发者模式"
+            android:widgetLayout="@layout/prefs_widget_checkbox" />
+        <!-- 单选 -->
+        <ListPreference
+            android:dialogTitle="@string/settings_select_language"
+            android:entries="@array/language"
+            android:entryValues="@array/language_sp_key"
+            android:key="current_app_language"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="@string/settings_language"
+            android:widgetLayout="@layout/prefs_widget_arrow" />
+        <!-- 多选,如果这里设置android:widgetLayout="@layout/prefs_widget_arrow",必须要设置 defaultValue,不然直接挂,原因未知 -->
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty"
+            android:dialogTitle="新消息通知"
+            android:entries="@array/msg_nofity"
+            android:entryValues="@array/msg_nofity_sp_key"
+            android:key="msg_nofity"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="消息通知列表"
+            android:widgetLayout="@layout/prefs_widget_arrow" />
+    </PreferenceCategory>
+    <PreferenceCategory android:layout="@layout/prefs_category_widget" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="checkbox_preference2"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="开发者模式"
+            android:widgetLayout="@layout/prefs_widget_checkbox" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -8,7 +8,7 @@ public class ToastUtil {
 
 	private static boolean isDebug = Constant.isDebug;
 
-	public static void showShort(Context context, String text) {
+	public static void show(Context context, String text) {
 		if (isDebug) {
 			Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 		}

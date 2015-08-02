@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import de.bvb.mybistudy.R;
 import de.bvb.mybistudy.ui.BaseFragment;
+import de.bvb.mybistudy.ui.activity.FeedbackActivity;
+import de.bvb.mybistudy.ui.activity.SettingsActivity;
 import de.bvb.mybistudy.util.ToastUtil;
 
 public class MeFragment extends BaseFragment {
@@ -23,6 +26,7 @@ public class MeFragment extends BaseFragment {
 	private GridView gridView;
 	private List<Map<String, Object>> data;
 	private SimpleAdapter adapter;
+	private Class<?>[] intentTarget = { null, null, null, null, FeedbackActivity.class, SettingsActivity.class };
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +60,10 @@ public class MeFragment extends BaseFragment {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			ToastUtil.showShort(context, data.get(position).get("iconName").toString());
+			ToastUtil.show(context, data.get(position).get("iconName").toString());
+			if (null != intentTarget[position]) {
+				startActivity(new Intent(context, intentTarget[position]));
+			}
 		}
 	};
 }

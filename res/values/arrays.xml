@@ -5,10 +5,22 @@
         <item>中文</item>
         <item>English</item>
     </string-array>
-    
     <string-array name="language_sp_key">
         <item>Chinese</item>
         <item>English</item>
+    </string-array>
+    <string-array name="empty"></string-array>
+    <string-array name="msg_nofity">
+        <item>ALL</item>
+        <item>联系人消息</item>
+        <item>代办审批</item>
+        <item>公众号消息</item>
+    </string-array>
+    <string-array name="msg_nofity_sp_key">
+        <item>all_msg</item>
+        <item>contacts_msg</item>
+        <item>to_do_msg</item>
+        <item>public_number_msg</item>
     </string-array>
 
 </resources>

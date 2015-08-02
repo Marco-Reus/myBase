@@ -69,7 +69,7 @@ public   class BaseFragment extends Fragment {
 		}
 		// 设置图片信息
 		if (resId == 0) {
-			iv.setBackgroundResource(R.drawable.loadding);
+			iv.setBackgroundResource(R.drawable.dialog_loadding);
 			iv.startAnimation(AnimationUtils.loadAnimation(context, R.anim.loading));
 		} else {
 			iv.setBackgroundResource(resId);
