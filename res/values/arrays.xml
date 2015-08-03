@@ -10,13 +10,13 @@
         <item>English</item>
     </string-array>
     <string-array name="empty"></string-array>
-    <string-array name="msg_nofity">
+    <string-array name="msg_notify">
         <item>ALL</item>
         <item>联系人消息</item>
         <item>代办审批</item>
         <item>公众号消息</item>
     </string-array>
-    <string-array name="msg_nofity_sp_key">
+    <string-array name="msg_notify_sp_key">
         <item>all_msg</item>
         <item>contacts_msg</item>
         <item>to_do_msg</item>

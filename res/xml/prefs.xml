@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!-- 第二个类别:开关,单选,多选 -->
     <PreferenceCategory android:layout="@layout/prefs_category_widget" >
 
         <!-- 开关 -->
@@ -23,20 +24,40 @@
         <MultiSelectListPreference
             android:defaultValue="@array/empty"
             android:dialogTitle="新消息通知"
-            android:entries="@array/msg_nofity"
-            android:entryValues="@array/msg_nofity_sp_key"
-            android:key="msg_nofity"
+            android:entries="@array/msg_notify"
+            android:entryValues="@array/msg_notify_sp_key"
+            android:key="msg_notify"
             android:layout="@layout/prefs_list_s_item"
             android:title="消息通知列表"
             android:widgetLayout="@layout/prefs_widget_arrow" />
     </PreferenceCategory>
+
+    <!-- 第二个类别:输入和滑动 -->
     <PreferenceCategory android:layout="@layout/prefs_category_widget" >
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="checkbox_preference2"
+
+        <!-- 文本输入框 -->
+        <EditTextPreference
+            android:dialogTitle="提示"
+            android:key="server_url"
             android:layout="@layout/prefs_list_s_item"
-            android:title="开发者模式"
-            android:widgetLayout="@layout/prefs_widget_checkbox" />
+            android:title="设置服务器地址" />
+        <!-- 进度条对话框 -->
+        <de.bvb.mybistudy.ui.widget.SeekBarDialogPreference
+            android:dialogLayout="@layout/prefs_layout_seekbar_dialog"
+            android:dialogTitle="滑动来选择数值"
+            android:key="seekbar_dialog"
+            android:layout="@layout/prefs_list_s_item"
+            android:negativeButtonText="cancel"
+            android:positiveButtonText="ok"
+            android:summary="点击选择大小"
+            android:title="滑动选择" />
+         <!-- 进度条 -->
+         <de.bvb.mybistudy.ui.widget.SeekBarPreference
+            android:key="seekbar"
+            android:layout="@layout/prefs_list_s_item"
+            android:summary="点击选择大小"
+            android:title="滑动条"
+            android:widgetLayout="@layout/prefs_widget_arrow" />
     </PreferenceCategory>
 
 </PreferenceScreen>
