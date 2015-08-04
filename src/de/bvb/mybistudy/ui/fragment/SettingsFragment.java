@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -13,11 +15,13 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
 import de.bvb.mybistudy.R;
 import de.bvb.mybistudy.ui.widget.SeekBarDialogPreference;
 import de.bvb.mybistudy.ui.widget.SeekBarPreference;
 import de.bvb.mybistudy.util.LanguageUtil;
 import de.bvb.mybistudy.util.SPUtil;
+import de.bvb.mybistudy.util.ToastUtil;
 
 public class SettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener, OnPreferenceClickListener {
 	// 参考 http://blog.csdn.net/flowingflying/article/details/16946467
@@ -32,6 +36,8 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 	private EditTextPreference editTextPreference_server_url;
 	private SeekBarDialogPreference seekBarDialogPreference_seekbar_dialog;
 	private SeekBarPreference seekBarPreference_seekbar;
+	private Preference selfPreference;
+	private PreferenceScreen preferenceScreen;
 
 	/** 既作为控件的key(相当于普通控件的id,只不过没有存放在R文件中,需要自己写一个对象),也作为存取的首选项的key */
 	private String key_current_app_language = "current_app_language";
@@ -40,9 +46,13 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 	private String key_server_url = "server_url";
 	private String key_seekbar_dialog = "seekbar_dialog";
 	private String key_seekbar = "seekbar";
+	private String key_self_preference = "self_preference";
+	private String key_preference_screen = "preference_screen";
+	
 
 	private String text_server_url;
 	private int value_seekbar_dialog;
+	private int pregress;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,10 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 
 		/** 设置保存的首选项的名字 */
 		getPreferenceManager().setSharedPreferencesName(spFileName);
+
+		// getActivity().setContentView(R.layout.prefs_list_content);
+
+		/** 添加布局文件,文件要在xml文件夹中,如果在layout中,没有联想功能 */
 		addPreferencesFromResource(R.xml.prefs);
 
 		initView();
@@ -91,8 +105,23 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 
 		/** 进度条 */
 		seekBarPreference_seekbar = (SeekBarPreference) findPreference(key_seekbar);
-		seekBarPreference_seekbar.setProgress((int) SPUtil.get(context, spFileName, key_seekbar, -1));
-	} 
+		pregress = (int) SPUtil.get(context, spFileName, key_seekbar, -1);
+		seekBarPreference_seekbar.setProgress((int) pregress);
+		
+		/** preference_screen */
+		preferenceScreen=(PreferenceScreen) findPreference(key_preference_screen);
+		/**  下面的intent也可以在xml里面设置*/
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_VIEW);
+		intent.setData(Uri.parse("http://www.hao123.com"));
+		preferenceScreen.setIntent(intent);
+
+		/** 自定义的preference */
+		selfPreference = findPreference(key_self_preference);
+		selfPreference.setTitle("preference点击触发Intent动作,打开百度");
+		selfPreference.setOnPreferenceClickListener(this);
+
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -114,6 +143,14 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 	public boolean onPreferenceClick(Preference preference) {
 		if (key_server_url.equalsIgnoreCase(preference.getKey())) {
 			editTextPreference_server_url.getEditText().setSelection(text_server_url.length());
+			return true;
+		} else if (key_self_preference.equalsIgnoreCase(preference.getKey())) {
+			ToastUtil.show(context, selfPreference.getTitle().toString());
+			/**  下面的intent设置了没有作用,必须在PreferenceScreen 里面设置intent才有用*/
+			Intent intent = new Intent();
+			intent.setAction(Intent.ACTION_VIEW);
+			intent.setData(Uri.parse("http://www.baidu.com"));
+			selfPreference.setIntent(intent);
 			return true;
 		}
 		return false;

@@ -51,13 +51,51 @@
             android:positiveButtonText="ok"
             android:summary="点击选择大小"
             android:title="滑动选择" />
-         <!-- 进度条 -->
-         <de.bvb.mybistudy.ui.widget.SeekBarPreference
+        <!-- 进度条 -->
+        <de.bvb.mybistudy.ui.widget.SeekBarPreference
             android:key="seekbar"
             android:layout="@layout/prefs_list_s_item"
             android:summary="点击选择大小"
             android:title="滑动条"
             android:widgetLayout="@layout/prefs_widget_arrow" />
+    </PreferenceCategory>
+
+    <!-- 第三个类别,自定义preference,可以设置布局和事件 -->
+    <PreferenceCategory android:layout="@layout/prefs_category_widget" >
+        <PreferenceScreen
+            android:key="preference_screen"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="preference_screen点击触发Intent动作,打开百度"
+            android:widgetLayout="@layout/prefs_widget_arrow" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.baidu.com" />
+        </PreferenceScreen>
+
+        <Preference
+            android:key="self_preference"
+            android:layout="@layout/prefs_list_s_item"
+            android:widgetLayout="@layout/prefs_widget_arrow" >
+        </Preference>
+    </PreferenceCategory>
+    <!-- 第四个类别,子父依赖模块组 -->
+    <PreferenceCategory
+        android:layout="@layout/prefs_category_widget"
+        android:title="子父依赖模块组" >
+        <CheckBoxPreference
+            android:key="parent_checkbox_preference"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="父选择控件"
+            android:widgetLayout="@layout/prefs_widget_checkbox" />
+
+        <!-- 子控件关联父控件，在父控件选中后子控件才可用 -->
+        <!-- android:layout="?android:attr/preferenceLayoutChild" -->
+        <CheckBoxPreference
+            android:dependency="parent_checkbox_preference"
+            android:key="child_checkbox_preference"
+            android:layout="@layout/prefs_list_s_item"
+            android:title="子控件（依托于父控件）"
+            android:widgetLayout="@layout/prefs_widget_checkbox" />
     </PreferenceCategory>
 
 </PreferenceScreen>
