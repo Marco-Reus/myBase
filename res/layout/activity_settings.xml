@@ -5,7 +5,7 @@
     android:background="#cccccc"
     android:orientation="vertical" >
 
-    <de.bvb.mybistudy.ui.widget.TopBar
+    <de.bvb.mydemo.ui.widget.TopBar
         android:id="@+id/top_bar_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

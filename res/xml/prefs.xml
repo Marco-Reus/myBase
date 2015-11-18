@@ -42,7 +42,7 @@
             android:layout="@layout/prefs_list_s_item"
             android:title="设置服务器地址" />
         <!-- 进度条对话框 -->
-        <de.bvb.mybistudy.ui.widget.SeekBarDialogPreference
+        <de.bvb.mydemo.ui.widget.SeekBarDialogPreference
             android:dialogLayout="@layout/prefs_layout_seekbar_dialog"
             android:dialogTitle="滑动来选择数值"
             android:key="seekbar_dialog"
@@ -52,7 +52,7 @@
             android:summary="点击选择大小"
             android:title="滑动选择" />
         <!-- 进度条 -->
-        <de.bvb.mybistudy.ui.widget.SeekBarPreference
+        <de.bvb.mydemo.ui.widget.SeekBarPreference
             android:key="seekbar"
             android:layout="@layout/prefs_list_s_item"
             android:summary="点击选择大小"
