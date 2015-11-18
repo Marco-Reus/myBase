@@ -1,84 +1,46 @@
 package de.bvb.mydemo.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.WindowManager;
+import android.widget.GridView;
 import de.bvb.mydemo.R;
+import de.bvb.mydemo.adapter.ImageLoaderAdapter;
+import de.bvb.mydemo.common.Constant.Images;
 import de.bvb.mydemo.ui.BaseFragment;
-import de.bvb.mydemo.util.ToastUtil;
+import de.bvb.mydemo.util.lrcCache.ImageLoader;
 
-public class MatchFragment extends BaseFragment implements OnClickListener {
+public class MatchFragment extends BaseFragment  {
+    private int imageViewWidth;
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_match, null);
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.activity_match, null);
+        int screenWidth = getScreenMetrics(getActivity()).widthPixels;
+        int space = (int) dp2px(getActivity(), 20f);
+        imageViewWidth = (screenWidth - space) / 3;
 
-		show = (Button) view.findViewById(R.id.show);
-		dismiss = (Button) view.findViewById(R.id.dismiss);
-		show.setOnClickListener(this);
-		dismiss.setOnClickListener(this);
-		return view;
-	}
+        GridView gv = (GridView) view.findViewById(R.id.gv);
+        ImageLoader imageLoader = ImageLoader.build(getActivity());
+        ImageLoaderAdapter adapter = new ImageLoaderAdapter(getActivity(), gv, imageLoader, Images.imageUrls, imageViewWidth);
+        gv.setAdapter(adapter);
+        return view;
+    }
 
-	private Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case 0:
-				showData((String) msg.obj);
-				break;
-			case 1:
-				ToastUtil.show(context, "网络错误");
-				break;
-			}
-			 dismissProgressDialog();
-		}
+    public DisplayMetrics getScreenMetrics(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        return dm;
+    }
 
-	};
-	private Button show;
-	private Button dismiss;
-
-	private String getData() {
-		SystemClock.sleep(3000);
-		return "this is result";
-	};
-
-	private void showData(String data) {
-		if (!TextUtils.isEmpty(data)) {
-			dismiss.setText(data);
-		}
-	};
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-
-		case R.id.show:
-			showProgressDialog("ing");
-			new Thread() {
-				public void run() {
-					String data = getData();
-					Message.obtain(handler, 0, data).sendToTarget();
-				};
-			}.start();
-
-			break;
-		case R.id.dismiss:
-			showProgressDialog("正在加载阿斯蒂芬卡萨丁发送到发送克莱顿法蜀都赋");
-			new Thread() {
-				public void run() {
-					String data = getData();
-					Message.obtain(handler, 1, data).sendToTarget();
-				};
-			}.start();
-			break;
-		}
-	}
+    public float dp2px(Context context, float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
 }

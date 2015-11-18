@@ -8,6 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="de.bvb.mydemo.MyApplication"
